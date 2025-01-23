@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(0deg, #d9edf8 0%, #f4f4f4 100%);
+}
+
+.main_content {
+  width: 100%;
+}
+
+.myContainer {
+  width: min(100% - 40px, 1440px);
+  margin-inline: auto;
+}
+
+.inner_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-block: clamp(30px, 5vw, 60px);
+  gap: 40px;
+}
+
+.onscroll {
+  background: white;
+  box-shadow: 10px 10px 40px hsla(0, 0%, 0%, 0.1);
+  transition: all 0.3s ease; /* Smooth animation */
+  animation: moveDown 0.5s ease-out forwards; /* Apply the animation */
+  position: sticky;
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(-100%); /* Start above the viewport */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); /* Move to its original position */
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .inner_container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .inner_container > * {
+    width: 100%;
+  }
+  .inner_container .form {
+    position: relative;
+    top: 0;
+  }
+}
